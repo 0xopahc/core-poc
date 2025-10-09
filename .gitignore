@@ -1,0 +1,5 @@
+.env
+env
+*.asc
+*.pgp
+node_moduels/

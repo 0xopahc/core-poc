@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity >=0.8.2 <0.9.0;
 
 contract CartFactory {
@@ -18,19 +19,10 @@ contract CartFactory {
   uint public orderCount;
 
 
-  function addOrder(string memory _status, bool _complete, uint[] memory _items, uint256 _total, address _customer, address _storeWallet, address _budTender) public {
-    Order memory newOrder = Order(_status, _complete, _items, _total, _customer, _storeWallet, _budTender);
+  function addOrder(string memory _status, bool _complete, uint[] memory _items, uint256 _total, address _customer, address _storeWallet) public {
+    Order memory newOrder = Order(_status, _complete, _items, _total, _customer, _storeWallet);
 
     // add new order to mapping
     orders[orderCount] = newOrder;
 
     orderCount++;
-
-  }
-
-  function getOrder(uint _orderid) public view returns (string memory,bool, uint[] memory, uint256, address, address, address) {
-    Order memory order = orders[_orderid];
-
-    return (order.status, order.complete, order.items, order.total, order.customer, order.storeWallet, order.budTender);
-  }
-}
