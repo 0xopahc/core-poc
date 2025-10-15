@@ -5,15 +5,16 @@ contract CartFactory {
 
   // New struct for JSON-like item objects
   struct Item {
-    uint id;      // Item code from API (e.g., Dutchie)
+    uint id;
+    string name;      // Item code from API (e.g., Dutchie)
     uint quantity; // How many of this item
     uint price;    // Price per unit (in wei or smallest unit)
     // Add more fields as needed, e.g., string name;
   }
 // [
-//     [1, 2, 6000],  
-//     [2, 1, 6059], 
-//     [3, 5, 5500]   
+//     [1, "dab", 2, 6000],  
+//     [2, "flow", 1, 6059], 
+//     [3, "ext", 5, 5500]   
 // ]
   struct Order {
     Item[] items; // Now an array of structured Item objects (JSON-like)
