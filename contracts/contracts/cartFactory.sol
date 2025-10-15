@@ -3,13 +3,22 @@ pragma solidity >=0.8.2 <0.9.0;
 
 contract CartFactory {
 
+  // New struct for JSON-like item objects
+  struct Item {
+    uint id;      // Item code from API (e.g., Dutchie)
+    uint quantity; // How many of this item
+    uint price;    // Price per unit (in wei or smallest unit)
+    // Add more fields as needed, e.g., string name;
+  }
+// [
+//     [1, 2, 6000],  
+//     [2, 1, 6059], 
+//     [3, 5, 5500]   
+// ]
   struct Order {
-    string status;
-    //idk if status is needed in this contract but status list: unconfirmed, confirmed, filled, fufilled(pickedup)
-    bool complete; // this param and status could be used to attack contract? 
-    uint[] items; // unit for now pull items as stored in leafly, dutchie, aero APIS etc.. item codes. need to look at dutchi api and others.
-    uint256 total;
-    address customer; // customer will be the one signing the contracts/ creating the order. will i need ? idk but will learn
+    Item[] items; // Now an array of structured Item objects (JSON-like)
+    uint256 total; // dutchie/aero will need to pass their 'Grand total'. represents ammount owed in usdc/pyusd
+    address customer; // Automatically set to msg.sender
     address storeWallet;
   }
 
@@ -18,11 +27,19 @@ contract CartFactory {
   // Create a counter to keep track of order IDs
   uint public orderCount;
 
-
-  function addOrder(string memory _status, bool _complete, uint[] memory _items, uint256 _total, address _customer, address _storeWallet) public {
-    Order memory newOrder = Order(_status, _complete, _items, _total, _customer, _storeWallet);
-
-    // add new order to mapping
-    orders[orderCount] = newOrder;
-
+  // Updated function: Uses msg.sender for customer, and Item[] for items
+  function addOrder( Item[] memory _items, uint256 _total, address _storeWallet) public {
+    uint newOrderId = orderCount;
     orderCount++;
+
+    // Assign fields one by one
+    orders[newOrderId].total = _total;
+    orders[newOrderId].customer = msg.sender;
+    orders[newOrderId].storeWallet = _storeWallet;
+
+    // Copy items manually (requires a loop)
+    for (uint i = 0; i < _items.length; i++) {
+        orders[newOrderId].items.push(_items[i]);
+    }
+  }
+}
