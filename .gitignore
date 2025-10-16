@@ -2,4 +2,4 @@
 env
 *.asc
 *.pgp
-node_moduels/
+node_modules/
