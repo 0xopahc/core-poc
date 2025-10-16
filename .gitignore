@@ -1,5 +1,6 @@
 .env
 env
+app/dist
 *.asc
 *.pgp
 node_modules/
