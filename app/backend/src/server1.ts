@@ -1,5 +1,4 @@
-// @deno-types="npm:@types/express@4"
-import express, { NextFunctions, Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import fs from 'fs';
 //config logging to your liking... api authored by aj for now 
 const log_file: string = '../app.log';
@@ -7,7 +6,7 @@ const logStream = fs.createWriteStream('/home/andowens/.bc/dappdao/backend/app.l
 // server is used to run the server. Listening on the hosts port running on 3k
 const app = express()
 const indexPath: string = '/home/andowens/.bc/dappdao/backend/src/public/index.html'
-const port = Number(Deno.env.get("PORT")) || 3000;
+const port: number = Number(process.env.PORT) || 3000;
 let hcItteration: number = 1;
 // entrypoint
 app.get('/', (req, res) => {
@@ -37,9 +36,6 @@ app.get('/about', (req, res) => {
   }
 });
 // endpoint for working with each contract. handle diffrent methods acordingly
-app.route('/createOrder' (req, res) => {
-  // 
-});
 
 
 // what does the application need to do
