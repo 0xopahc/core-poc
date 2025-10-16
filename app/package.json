@@ -18,6 +18,16 @@
     "typescript": "~5.8.0",
     "viem": "^2.30.0"
   },
+  "scripts": {
+    "build": "tsc",
+    "startT": "node ./dist/backend/src/server1.js",
+    "clean": "rm -rf ./dist && tsc",
+    "btc": "rm -rf ./dist && tsc && node ./dist/backend/src/server.js",
+    "start": "node ./dist/backend/src/server.js"
+  },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }

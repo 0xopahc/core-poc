@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import fs from "fs"
 // init log serverice 
 const log_file: string = '../app.log';
-const logStream = fs.createWriteStream('/home/andowens/.bc/backend/app.log', { flags: 'a' });
+const logStream = fs.createWriteStream('../app.log', { flags: 'a' });
 
 export const getAboutPage = (req: Request, res: Response) => {
   try{
@@ -13,7 +13,7 @@ export const getAboutPage = (req: Request, res: Response) => {
     req.ip; // fallback
     logStream.write(`${new Date().toISOString()} [LOG]: ${ip} hit about page \n`)
     //server file
-    res.sendFile(`/home/andowens/.bc/backend/src/public/index.html`);
+    res.sendFile(`~/core-poc/app/backend/src/public/index.html`);
   } catch (e) {
     logStream.write(`${new Date().toISOString()} [ERROR]: \n${e}\n`)
   }
