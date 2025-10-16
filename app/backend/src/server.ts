@@ -1,7 +1,7 @@
 import express from "express";
-import aboutRoutes from "./routes/about.ts";
-import hc from "./routes/hc.ts";
-import signCart from "./routes/cart.ts";
+import aboutRoutes from "./routes/about.js";
+import hc from "./routes/hc.js";
+import signCart from "./routes/cart.js";
 const port: number = 3000;
 const app = express();
 

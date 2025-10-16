@@ -1,0 +1,12 @@
+2025-10-16T20:05:26.774Z [LOG]: ::1 hit about page 
+2025-10-16T20:05:26.774Z [ERROR]: 
+TypeError: path must be absolute or specify root to res.sendFile
+2025-10-16T20:05:44.569Z [LOG]: ::1 hit about page 
+2025-10-16T20:05:44.569Z [ERROR]: 
+TypeError: path must be absolute or specify root to res.sendFile
+2025-10-16T20:06:22.139Z [LOG]: ::1 hit about page 
+2025-10-16T20:06:22.140Z [ERROR]: 
+TypeError: path must be absolute or specify root to res.sendFile
+2025-10-16T20:06:53.392Z [LOG]: ::1 hit about page 
+2025-10-16T20:06:53.392Z [ERROR]: 
+TypeError: path must be absolute or specify root to res.sendFile
