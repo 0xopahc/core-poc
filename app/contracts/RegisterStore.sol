@@ -8,8 +8,7 @@ abstract contract StoreRegistry is Ownable {
     mapping(address => bool) public registeredStores;
 
     // Mapping to store metadata (optional, for platform integration)
-    mapping(address => string) public storeMetadata; // e.g., store ID or name from Dutchie/Leafly
-
+    mapping(address => string) public storeMetadata; 
     // Events for logging
     event StoreRegistered(address indexed storeWallet, string metadata);
     event StoreRemoved(address indexed storeWallet);

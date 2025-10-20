@@ -1,5 +1,5 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
-export default buildModule("RegisterStore", (m) => {
+export default buildModule("RegisterStoreModule", (m) => {
   const newStore = m.contract("StoreRegisry");
   
   // call register store func 
