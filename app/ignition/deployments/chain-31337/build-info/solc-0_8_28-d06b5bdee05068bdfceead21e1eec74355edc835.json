@@ -1,0 +1,39 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-d06b5bdee05068bdfceead21e1eec74355edc835",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "userSourceNameMap": {
+    "contracts/cartFactory.sol": "project/contracts/cartFactory.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/cartFactory.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity >=0.8.2 <0.9.0;\n\ncontract CartFactory {\n\n  // New struct for JSON-like item objects\n  struct Item {\n    uint id;\n    string name;      // Item code from API (e.g., Dutchie)\n    uint quantity; // How many of this item\n    uint price;    // Price per unit (in wei or smallest unit)\n    // Add more fields as needed, e.g., string name;\n  }\n// [\n//     [1, \"dab\", 2, 6000],  \n//     [2, \"flow\", 1, 6059], \n//     [3, \"ext\", 5, 5500]   \n// ]\n  struct Order {\n    Item[] items; // Now an array of structured Item objects (JSON-like)\n    uint256 total; // dutchie/aero will need to pass their 'Grand total'. represents ammount owed in usdc/pyusd\n    address customer; // Automatically set to msg.sender\n    address storeWallet;\n  }\n\n  // store orders\n  mapping (uint => Order) public orders;\n  // Create a counter to keep track of order IDs\n  uint public orderCount;\n\n  // Updated function: Uses msg.sender for customer, and Item[] for items\n  function addOrder( Item[] memory _items, uint256 _total, address _storeWallet) public {\n    uint newOrderId = orderCount;\n    orderCount++;\n\n    // Assign fields one by one\n    orders[newOrderId].total = _total;\n    orders[newOrderId].customer = msg.sender;\n    orders[newOrderId].storeWallet = _storeWallet;\n\n    // Copy items manually (requires a loop)\n    for (uint i = 0; i < _items.length; i++) {\n        orders[newOrderId].items.push(_items[i]);\n    }\n  }\n}\n"
+      }
+    }
+  }
+}

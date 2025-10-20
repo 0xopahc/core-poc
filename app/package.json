@@ -20,6 +20,8 @@
   },
   "scripts": {
     "build": "tsc",
+    "deployL": "yarn hardhat ignition deploy --network localhost",
+    "deployS": "yarn hardhat ignition deploy --network sepolia",
     "startT": "node ./dist/backend/src/server1.js",
     "clean": "rm -rf ./dist && tsc",
     "btc": "rm -rf ./dist && tsc && node ./dist/backend/src/server.js",
