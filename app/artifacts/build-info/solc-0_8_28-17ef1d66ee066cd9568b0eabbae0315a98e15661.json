@@ -1,0 +1,39 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-17ef1d66ee066cd9568b0eabbae0315a98e15661",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "userSourceNameMap": {
+    "contracts/Ierc20.sol": "project/contracts/Ierc20.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/Ierc20.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity >=0.8.2 <0.9.0;\n\ninterface IERC20 {\n    function transfer(\n        address recipient,\n        uint256 amount\n    ) external returns (bool);\n    function transferFrom(\n        address sender,\n        address recipient,\n        uint256 amount\n    ) external returns (bool);\n    function balanceOf(address account) external view returns (uint256);\n    function approve(address spender, uint256 amount) external returns (bool);\n}\n"
+      }
+    }
+  }
+}
