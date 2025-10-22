@@ -47,4 +47,7 @@ abstract contract StoreRegistry is Ownable {
     ) external view returns (bool) {
         return registeredStores[_storeWallet];
     }
+
+    //function to list all registered store names
+    function getStoreList()
 }
