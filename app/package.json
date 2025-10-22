@@ -33,5 +33,7 @@
   "dependencies": {
     "@openzeppelin/contracts": "^5.4.0",
     "express": "^5.1.0"
+    "typescript": "~5.8.0",
+    "viem": "^2.30.0"
   }
 }
